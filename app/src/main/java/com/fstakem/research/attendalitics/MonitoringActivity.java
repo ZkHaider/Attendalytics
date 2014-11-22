@@ -3,6 +3,7 @@ package com.fstakem.research.attendalitics;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,8 +33,8 @@ public class MonitoringActivity extends Activity
 
     public void onRangingClicked(View view)
     {
-        //Intent myIntent = new Intent(this, RangingActivity.class);
-        //this.startActivity(myIntent);
+        Intent myIntent = new Intent(this, RangingActivity.class);
+        this.startActivity(myIntent);
     }
 
     private void verifyBluetooth()
@@ -97,13 +98,9 @@ public class MonitoringActivity extends Activity
 
     private void logToDisplay(final String line)
     {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                EditText editText = (EditText)MonitoringActivity.this
-                        .findViewById(R.id.monitoringText);
-                editText.append(line+"\n");
-            }
-        });
+        EditText editText = (EditText)MonitoringActivity.this
+                .findViewById(R.id.monitoringText);
+        editText.append(line+"\n");
     }
 
     public void didEnterRegion(Region region)
